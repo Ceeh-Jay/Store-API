@@ -14,11 +14,20 @@ const productSchema = new mongoose.Schema({
         default: false
     },
     rating: {
-        type: number,
+        type: Number,
         default: 0
     },
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    company: {
+        type: String,
+        enum: {
+            values: ['ikea', 'liddy', 'caressa', 'marcos'],
+            message: '{VALUE} is not supported'  
+        }
     }
 })
+
+module.exports = mongoose.model('Product', productSchema)
